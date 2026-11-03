@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#29251e">
+  <title>La Fonda de los 40 | Johana</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f4eee2;
+      --sand: #dfd0b8;
+      --brown: #392c20;
+      --dark: #25231e;
+      --olive: #65694a;
+      --gold: #b99a65;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero {
+      min-height: 690px;
+      height: 94vh;
+      max-height: 900px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff8ec;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(25,22,17,.25), rgba(25,22,17,.75)),
+        url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=2000&q=85')
+        center 48% / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(239,220,184,.65);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 35px 24px;
+      animation: appear 1.2s ease both;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(65px, 12vw, 125px);
+      font-weight: 500;
+      line-height: .85;
+      margin: 28px 0 15px;
+      text-shadow: 0 3px 20px #211a12;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: .43em;
+      letter-spacing: 5px;
+      margin-top: 20px;
+      font-weight: 400;
+    }
+
+    .hero-line {
+      width: 75px;
+      height: 1px;
+      background: var(--gold);
+      margin: 28px auto;
+    }
+
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 27px;
+      letter-spacing: 2px;
+    }
+
+    .hero-time {
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-top: 12px;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 38px;
+      left: 0;
+      right: 0;
+      font-size: 9px;
+      letter-spacing: 3px;
+      z-index: 2;
+    }
+
+    section {
+      padding: 85px 22px;
+      text-align: center;
+    }
+
+    .intro {
+      background: var(--cream);
+    }
+
+    .small-title {
+      color: var(--olive);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 6vw, 57px);
+      font-weight: 500;
+      margin: 17px 0;
+      line-height: 1;
+    }
+
+    .intro p {
+      max-width: 590px;
+      margin: 20px auto 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .ornament {
+      color: var(--gold);
+      font-size: 25px;
+      margin: 20px 0;
+    }
+
+    .details {
+      background: var(--dark);
+      color: var(--cream);
+    }
+
+    .details .small-title { color: #c5ad80; }
+
+    .detail-grid {
+      max-width: 850px;
+      margin: 45px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .detail {
+      padding: 25px 15px;
+      border-top: 1px solid rgba(185,154,101,.65);
+      border-bottom: 1px solid rgba(185,154,101,.65);
+    }
+
+    .detail-icon {
+      color: var(--gold);
+      font-size: 25px;
+      margin-bottom: 17px;
+    }
+
+    .detail h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 27px;
+      font-weight: 500;
+      margin: 0 0 10px;
+    }
+
+    .detail p {
+      color: #d2c6b4;
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .countdown {
+      background: #e8dfd0;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: clamp(15px, 5vw, 55px);
+      margin-top: 38px;
+    }
+
+    .time-box strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 8vw, 65px);
+      font-weight: 500;
+      color: var(--olive);
+    }
+
+    .time-box span {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .location {
+      background: var(--cream);
+    }
+
+    .location p {
+      font-size: 13px;
+      line-height: 1.9;
+      color: #716453;
+    }
+
+    .map-button, .rsvp-button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 16px 28px;
+      background: var(--olive);
+      color: white;
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .25s;
+    }
+
+    .map-button:hover, .rsvp-button:hover {
+      background: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    .rsvp {
+      background: #d8c8ad;
+      padding: 85px 22px 95px;
+    }
+
+    .rsvp p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px;
+      max-width: 500px;
+      margin: 20px auto;
+      line-height: 1.4;
+    }
+
+    .rsvp-button {
+      background: var(--brown);
+    }
+
+    footer {
+      background: var(--dark);
+      color: #cfc2ac;
+      text-align: center;
+      padding: 28px 15px;
+      font-size: 9px;
+      letter-spacing: 3px;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 650px) {
+      .hero {
+        min-height: 650px;
+        height: 88vh;
+        background-position: 58% center;
+      }
+
+      .hero::after { inset: 12px; }
+
+      .hero h1 { font-size: 76px; }
+
+      section { padding: 68px 20px; }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        max-width: 340px;
+      }
+
+      .detail { padding: 24px 12px; }
+
+      .intro p { font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Una celebración muy especial</div>
+      <h1>La Fonda <span>de los 40</span></h1>
+      <div class="hero-line"></div>
+      <div class="hero-date">16 · Enero · 2027</div>
+      <div class="hero-time">SÁBADO · 6:00 P. M.</div>
+    </div>
+    <div class="scroll">DESLIZA PARA DESCUBRIR</div>
+  </header>
+
+  <section class="intro">
+    <div class="small-title">Una noche para recordar</div>
+    <div class="ornament">✦</div>
+    <h2>¡Los 40 de Johana!</h2>
+    <p>
+      Las mejores historias se celebran a lo grande.
+      Hoy la vida nos regala una razón más para reunirnos,
+      brindar y disfrutar de una noche inolvidable.
+    </p>
+    <div class="ornament">❧</div>
+    <p>¡Será un gusto celebrar contigo!</p>
+  </section>
+
+  <section class="details">
+    <div class="small-title">Prepara tu mejor espíritu de fiesta</div>
+    <h2>Nos vemos en la Fonda</h2>
+
+    <div class="detail-grid">
+      <div class="detail">
+        <div class="detail-icon">♧</div>
+        <h3>La fecha</h3>
+        <p>Sábado<br>16 de enero de 2027</p>
+      </div>
+
+      <div class="detail">
+        <div class="detail-icon">◷</div>
+        <h3>La hora</h3>
+        <p>6:00 de la tarde<br>¡Llega con toda la energía!</p>
+      </div>
+
+      <div class="detail">
+        <div class="detail-icon">⌖</div>
+        <h3>El lugar</h3>
+        <p>Finca RUIZMONT PALACE<br>Girardota, Vereda San Diego #1</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="countdown">
+    <div class="small-title">La cuenta regresiva ha comenzado</div>
+    <h2>Falta muy poco</h2>
+
+    <div class="timer">
+      <div class="time-box">
+        <strong id="days">00</strong>
+        <span>Días</span>
+      </div>
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <span>Horas</span>
+      </div>
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <span>Minutos</span>
+      </div>
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <span>Segundos</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="location">
+    <div class="small-title">El destino</div>
+    <div class="ornament">⌖</div>
+    <h2>¿Cómo llegar?</h2>
+    <p>
+      Finca RUIZMONT PALACE<br>
+      Girardota, Vereda San Diego #1
+    </p>
+    <a class="map-button"
+       href="https://www.google.com/maps?q=6.379549026489258,-75.43218231201172"
+       target="_blank" rel="noopener">
+       Ver ubicación en Google Maps
+    </a>
+  </section>
+
+  <section class="rsvp">
+    <div class="small-title">Queremos contar contigo</div>
+    <h2>Confirma tu asistencia</h2>
+    <p>
+      Tu compañía hará parte de esta historia.
+      Confirma tu asistencia y alista las ganas de celebrar.
+    </p>
+
+    <a class="rsvp-button"
+       href="https://wa.me/573007782555?text=Hola%20Johana%2C%20quiero%20confirmar%20mi%20asistencia%20a%20La%20Fonda%20de%20los%2040."
+       target="_blank" rel="noopener">
+       Confirmar por WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    LA FONDA DE LOS 40 · JOHANA · 2027
+  </footer>
+
+  <script>
+    const eventDate = new Date('2027-01-16T18:00:00-05:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = eventDate - now;
+
+      if (difference <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      document.getElementById('days').textContent =
+        Math.floor(difference / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+
+      document.getElementById('hours').textContent =
+        Math.floor((difference / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+
+      document.getElementById('minutes').textContent =
+        Math.floor((difference / (1000 * 60)) % 60).toString().padStart(2, '0');
+
+      document.getElementById('seconds').textContent =
+        Math.floor((difference / 1000) % 60).toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
