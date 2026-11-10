@@ -18,7 +18,6 @@
       --brown: #30251d;
       --brown-light: #6e5743;
       --gold: #b28a50;
-      --olive: #66664b;
       --line: #dfd2bf;
     }
 
@@ -152,9 +151,53 @@
       font-size: 13px;
     }
 
+    .music {
+      background: #eae1d3;
+      padding: 38px 22px;
+    }
+
+    .music h2 {
+      font-size: clamp(34px, 5vw, 46px);
+      margin-bottom: 12px;
+    }
+
+    .music p {
+      color: var(--brown-light);
+      font-size: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 13px 25px;
+      border: 1px solid var(--gold);
+      background: var(--brown);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .25s;
+    }
+
+    .button:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    .music-button {
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .music-status {
+      margin-top: 12px;
+      font-size: 10px;
+      color: var(--brown-light);
+    }
+
     .gallery {
       background: var(--paper);
-      padding-top: 65px;
     }
 
     .gallery-grid {
@@ -313,54 +356,6 @@
       margin: 8px 0;
     }
 
-    .button {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 13px 25px;
-      border: 1px solid var(--gold);
-      background: var(--brown);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: .25s;
-    }
-
-    .button:hover {
-      background: var(--gold);
-      color: white;
-    }
-
-    .music {
-      background: #eae1d3;
-    }
-
-    .music p {
-      color: var(--brown-light);
-      font-size: 12px;
-    }
-
-    .music-button {
-      border: 0;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .video-container {
-      max-width: 560px;
-      margin: 25px auto 0;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: #211a15;
-    }
-
-    .video-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
     .rsvp {
       background: var(--paper);
     }
@@ -422,6 +417,10 @@
         padding: 60px 18px;
       }
 
+      .music {
+        padding: 38px 18px;
+      }
+
       .count-box {
         min-width: 70px;
       }
@@ -439,16 +438,37 @@
     <div class="hero-content">
       <p class="eyebrow">Una celebración muy especial</p>
       <h1>La Fonda 4.0</h1>
-      <p class="hero-subtitle">Johana</p>
+      <p class="hero-subtitle">Celebrando la vida de Johana</p>
       <div class="ornament">✦</div>
       <p class="hero-date">16 de enero de 2027</p>
     </div>
   </header>
 
+  <!-- MÚSICA: ubicada al inicio de la invitación -->
+  <section class="section music">
+    <div class="section-inner">
+      <p class="section-label">Una celebración especial</p>
+      <h2>Que comience la fiesta</h2>
+      <p>Activa la música y disfruta la invitación.</p>
+
+      <button class="button music-button" id="musicButton" onclick="startMusic()">
+        Entrar y escuchar ♫
+      </button>
+
+      <p class="music-status" id="musicStatus">
+        Pulsa el botón para escuchar la canción.
+      </p>
+
+      <audio id="backgroundMusic" loop preload="auto">
+        <source src="cancion.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </section>
+
   <section class="section">
     <div class="section-inner">
       <p class="section-label">Una ocasión para celebrar</p>
-      <h2>JM</h2>
+      <h2>Johana, la protagonista</h2>
       <div class="ornament">❧</div>
       <p class="intro">
         Hay momentos que merecen celebrarse en grande, rodeados de buena
@@ -460,18 +480,18 @@
 
   <section class="section gallery">
     <div class="section-inner">
-      <p class="section-label"> </p>
-      <h2> </h2>
+      <p class="section-label">La homenajeada</p>
+      <h2>Una mujer, mil historias</h2>
 
       <div class="gallery-grid">
         <div class="photo-card">
-          <img src="johana-1.jpeg" alt=" ">
-          <p class="photo-caption"> </p>
+          <img src="johana-1.jpeg" alt="Fotografía de Johana">
+          <p class="photo-caption">Una mujer, mil historias</p>
         </div>
 
         <div class="photo-card">
-          <img src="johana-2.jpeg" alt=" ">
-          <p class="photo-caption"> </p>
+          <img src="johana-2.jpeg" alt="Johana celebrando la vida">
+          <p class="photo-caption">¡A celebrar la vida!</p>
         </div>
       </div>
     </div>
@@ -480,7 +500,7 @@
   <section class="section details">
     <div class="section-inner">
       <p class="section-label">Guarda la fecha</p>
-      <h2>Nos vemos en la fonda 4.0</h2>
+      <h2>Nos vemos en la fonda</h2>
 
       <div class="details-grid">
         <div class="detail-card">
@@ -581,20 +601,6 @@
     </div>
   </section>
 
-  <section class="section music">
-    <div class="section-inner">
-      <p class="section-label">Dale play a la celebración</p>
-      <h2>Que comience la fiesta</h2>
-      <p>Entra y disfruta la música mientras recorres la invitación.</p>
-
-      <button class="button music-button" id="musicButton" onclick="startMusic()">
-        Entrar y escuchar ♫
-      </button>
-
-      <div class="video-container" id="videoContainer" hidden></div>
-    </div>
-  </section>
-
   <section class="section rsvp">
     <div class="section-inner">
       <p class="section-label">Confirma tu asistencia</p>
@@ -656,23 +662,22 @@
     }
 
     function startMusic() {
-      const container = document.getElementById("videoContainer");
+      const music = document.getElementById("backgroundMusic");
       const button = document.getElementById("musicButton");
+      const status = document.getElementById("musicStatus");
 
-      container.hidden = false;
-      container.innerHTML = `
-        <iframe
-          src="https://www.youtube.com/embed/cVlAmP-KDT4?autoplay=1&loop=1&playlist=cVlAmP-KDT4"
-          title="Música de la celebración"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      `;
+      music.volume = 0.5;
 
-      button.textContent = "¡Que siga la música! ♫";
-      button.disabled = true;
-      button.style.opacity = "0.7";
-      button.style.cursor = "default";
+      music.play()
+        .then(() => {
+          button.textContent = "♫ Música activada";
+          status.textContent = "Disfruta la invitación con música.";
+          button.disabled = true;
+          button.style.opacity = "0.7";
+        })
+        .catch(() => {
+          status.textContent = "No se pudo reproducir. Comprueba que el archivo cancion.mp3 esté en el repositorio.";
+        });
     }
 
     updateCountdown();
